@@ -1,4 +1,5 @@
-# magento-bdd-python-behave-selenium
+# Python Behave BDD Framework
+
 This is a BDD automation framework developed on Selenium and Python Behave. Sample test side used in this project
 
 https://magento.softwaretestingboard.com
