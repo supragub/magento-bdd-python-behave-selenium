@@ -1,4 +1,4 @@
-# Python Behave BDD Framework
+# BDD with Python Behave and Selenium
 
 This is a BDD automation framework developed on Selenium and Python Behave. Sample test side used in this project
 
