@@ -1,11 +1,10 @@
-from selenium import webdriver
+import time
 from selenium.webdriver.common.by import By
 from behave import given, when, then
 from faker import Faker
 
 @given('I am on the Luma homepage without logged in')
 def step_impl(context):
-    context.browser = webdriver.Chrome()
     context.browser.get("https://magento.softwaretestingboard.com")
 
 @given('I navigate to the registration page')
@@ -52,14 +51,12 @@ def step_impl(context):
 @then('I should be registered successfully and redirected to My Account page')
 def step_impl(context):
     assert "My Account" in context.browser.title
-    context.browser.quit()
 
 @then('I should see invalid email format warning message and the registration fails')
 def step_impl(context):
     email_address_error = context.browser.find_element(By.XPATH, "//*[@id='email_address-error']").text
     print(email_address_error)
     assert "Please enter a valid email address (Ex: johndoe@domain.com)." in email_address_error
-    context.browser.quit()
 
 @then('I should see invalid password warning message and the registration fails')
 def step_impl(context):
@@ -67,13 +64,12 @@ def step_impl(context):
  #   confirm_password_error = context.browser.find_element(By.XPATH, "//*[@id='password-confirmation-error']").text
     print(password_error)
     assert "Minimum length of this field must be equal or greater than 8 symbols. Leading and trailing spaces will be ignored." or "Minimum of different classes of characters in password is 3. Classes of characters: Lower Case, Upper Case, Digits, Special Characters." in password_error
-    context.browser.quit()
 
 @then('I should see a warning message and the registration fails')
 def step_impl(context):
+    time.sleep(2)
     registration_error_message = context.browser.find_element(By.XPATH, "//*[@id='maincontent']/div[2]/div[2]/div/div/div").text
     print(registration_error_message)
     assert "There is already an account with this email address. If you are sure that it is your email address, click here to get your password and access your account." in registration_error_message
-    context.browser.quit()
 
     

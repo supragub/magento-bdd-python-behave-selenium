@@ -1,11 +1,9 @@
 import time
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from behave import given, when, then
 
 @given('I am on the Luma homepage')
 def step_impl(context):
-    context.browser = webdriver.Chrome()
     context.browser.get("https://magento.softwaretestingboard.com")
     assert "Home Page" in context.browser.title
 
@@ -61,4 +59,3 @@ def step_impl(context):
     time.sleep(3)
     assert "Thank you for your purchase!" in context.browser.find_element(By.XPATH, "//*[@id='maincontent']/div[1]/h1/span").text
     time.sleep(3)
-    context.browser.quit()
