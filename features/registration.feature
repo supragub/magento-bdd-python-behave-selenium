@@ -12,7 +12,7 @@ Feature: Luma webshop registration
     And I submit the registration form
     Then I should be registered successfully and redirected to My Account page
 
-	Scenario: There is already an account with this email address
+  Scenario: There is already an account with this email address
     When I fill in the registration form with already registered email address
     And I submit the registration form
     Then I should see a warning message and the registration fails
